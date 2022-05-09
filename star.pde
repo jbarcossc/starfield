@@ -14,7 +14,7 @@ class Star {
   Star(){
     x = random(-width/2, width/2);
     y = random(-height/2, height/2);
-    z = random(1, 3);
+    z = random(1, 2);
     px = x;
     py = y;
     ppx = px;
@@ -28,10 +28,7 @@ class Star {
   void show(){
     strokeWeight(z);
     stroke(255);
-    fill(255);
     line(ppx, ppy, x, y);
-    //ellipse(x, y, z, z);
-    
   }
   
   void update(){
@@ -41,19 +38,19 @@ class Star {
     py = y;
     x += xSpeed;
     y += ySpeed;
-    z *= 1.04;
+    z *= 1.03;
     xSpeed *= acc;
     ySpeed *= acc;
-    if (x < -width/2 || x > width/2 || y < -height/2 || y > height/2){
+    if (abs(x) > width/2 || abs(y) > height/2){
       x = random(-width/2, width/2);
-      px = x;
-      ppx = x;
-      xSpeed = x*0.02;
       y = random(-height/2, height/2);
+      px = x;
       py = y;
+      ppx = x;
       ppy = y;
+      xSpeed = x*0.02;
       ySpeed = y*0.02;
-      z = 1;
+      z = random(1,2);
     }
   }
 }
